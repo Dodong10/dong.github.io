@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>I LOVE YOU LOVE 💖</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #0b1220;
+      --accent: #ff416c;
+      --accent2: #ffaf7b
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial
+    }
+
+    body {
+      background: radial-gradient(ellipse at 10% 10%, rgba(255, 65, 108, 0.08), transparent 8%),
+        radial-gradient(ellipse at 90% 90%, rgba(255, 175, 123, 0.06), transparent 8%),
+        var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      overflow: hidden
+    }
+
+    .card {
+      width: min(920px, 95%);
+      padding: 36px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.04));
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+      backdrop-filter: blur(6px);
+      text-align: center;
+      position: relative;
+      z-index: 10
+    }
+
+    h1 {
+      font-size: clamp(28px, 6vw, 64px);
+      margin: 10px 0 8px;
+      letter-spacing: 1px
+    }
+
+    .heart {
+      display: inline-block;
+      width: 120px;
+      height: 120px;
+      transform: translateY(0);
+      animation: beat 1s infinite;
+      filter: drop-shadow(0 8px 28px rgba(255, 65, 108, 0.18))
+    }
+
+    .heart svg {
+      width: 100%;
+      height: 100%
+    }
+
+    .sub {
+      margin-top: 6px;
+      font-size: 18px;
+      opacity: .9
+    }
+
+    .btns {
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      justify-content: center
+    }
+
+    button {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border: 0;
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: #111;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all .25s ease
+    }
+
+    .hidden {
+      opacity: 0;
+      transform: translateY(6px) scale(.98);
+      transition: all .35s
+    }
+
+    .show {
+      opacity: 1;
+      transform: none
+    }
+
+    @keyframes beat {
+      0% {
+        transform: scale(1)
+      }
+
+      25% {
+        transform: scale(1.08)
+      }
+
+      50% {
+        transform: scale(1)
+      }
+
+      75% {
+        transform: scale(1.08)
+      }
+
+      100% {
+        transform: scale(1)
+      }
+    }
+
+    /* Train animation */
+    .train {
+      position: fixed;
+      bottom: 30%;
+      left: -100%;
+      font-size: 40px;
+      font-weight: 900;
+      white-space: nowrap;
+      color: #ffaf7b;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, .6);
+      animation: trainMove 6s linear forwards;
+      z-index: 5
+    }
+
+    @keyframes trainMove {
+      from {
+        left: -100%;
+      }
+
+      to {
+        left: 110%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card" role="main">
+    <div style="display:flex;gap:20px;align-items:center;justify-content:center;flex-wrap:wrap;">
+      <div class="heart" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 21s-7-4.438-9.5-7.5C.5 10.875 3 6.5 7.5 6.5c2.5 0 3.75 1.75 4.5 2.75.75-1 2-2.75 4.5-2.75C21 6.5 23.5 10.875 21.5 13.5 19 16.562 12 21 12 21z"
+            fill="url(#g)" />
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#ff416c" />
+              <stop offset="1" stop-color="#ffaf7b" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div>
+        <h1>I LOVE YOU <span style="color:var(--accent)">LOVE</span></h1>
+        <div class="sub">from: dodong</div>
+        <div class="sub" style="margin-top:4px;">sorry baby</div>
+
+        <div class="btns">
+          <button id="yesBtn">Yes</button>
+          <button id="noBtn">No</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="messageBox" class="hidden"
+      style="margin-top:22px;font-size:18px;background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;">
+      I LOVE YOU LOVE💖💋</div>
+
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const messageBox = document.getElementById('messageBox');
+
+    // Train effect
+    function runTrain() {
+      const train = document.createElement('div');
+      train.className = 'train';
+      train.textContent = '🚂💨 LOVE KA DODONG 💖';
+      document.body.appendChild(train);
+
+      train.addEventListener('animationend', () => train.remove());
+    }
+
+    yesBtn.addEventListener('click', () => {
+      messageBox.classList.remove('hidden');
+      setTimeout(() => messageBox.classList.add('show'), 10);
+      runTrain();
+    });
+
+    noBtn.addEventListener('click', () => {
+      let currentNo = parseFloat(getComputedStyle(noBtn).fontSize);
+      let currentYes = parseFloat(getComputedStyle(yesBtn).fontSize);
+      noBtn.style.fontSize = (currentNo - 1) + 'px';
+      yesBtn.style.fontSize = (currentYes + 1) + 'px';
+    });
+
+    // Auto-run once
+    window.addEventListener('load', () => {
+      setTimeout(() => { yesBtn.click(); }, 800);
+    });
+  </script>
+</body>
+
+</html>
